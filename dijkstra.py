@@ -13,32 +13,35 @@ class Graph():
         for node in range(self.V): 
             print (node, "-", dist[node]) 
    
-    def minDistance(self, dist, shortPathSet): 
+    def minDistance(self, dist, shortPathSet):         """ n """
    
         min = sys.maxsize 
    
-        for v in range(self.V): 
+        for v in range(self.V):                         """ n """
             if dist[v] < min and shortPathSet[v] == False: 
                 min = dist[v] 
                 min_index = v 
         return min_index
 
-    def dijkstra(self, initPoint): 
+    def dijkstra(self, initPoint):                      """ n^2 """
    
-        dist = [sys.maxsize] * self.V 
-        dist[initPoint] = 0
-        shortPathSet = [False] * self.V 
+        dist = [sys.maxsize] * self.V                   """ 1 """
+        dist[initPoint] = 0                             """ 1 """
+        shortPathSet = [False] * self.V                 """ 1 """
    
-        for _ in range(self.V): 
+        for _ in range(self.V):                         """ n """
 
-            u = self.minDistance(dist, shortPathSet) 
+            u = self.minDistance(dist, shortPathSet)    """ n """
             shortPathSet[u] = True
    
-            for v in range(self.V): 
-                if self.graph[u][v] > 0 and shortPathSet[v] == False and dist[v] > dist[u] + self.graph[u][v]: 
-                    dist[v] = dist[u] + self.graph[u][v] 
+            for v in range(self.V):                     """ n """
+                if self.graph[u][v] > 0 and shortPathSet[v] == False and dist[v] > dist[u] + self.graph[u][v]: """ 1 """
+                    dist[v] = dist[u] + self.graph[u][v]                                                       """ 1 """
     
-        self.printSolution(dist) 
+        self.printSolution(dist)                                                                               """ 1 """
+
+
+
 
 start_time = time.time()   
 g = Graph(9) 
